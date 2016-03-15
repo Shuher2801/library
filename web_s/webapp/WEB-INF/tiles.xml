@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition name="default" template="/WEB-INF/view/layouts/default.jspx">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="header" value="/WEB-INF/view/common/header.jspx"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/view/common/footer.jspx"/>
+    </definition>
+
+    <definition name="view/menu" extends="default">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="body" value="/WEB-INF/view/menu.jsp"/>
+    </definition>
+    
+<!--  admin view -->
+
+    <definition name="userPage/userBooks" extends="default">
+        <put-attribute name="title" value="Login"/>
+        <put-attribute name="body" value="/WEB-INF/view/userPage/userBooks.jsp"/>
+    </definition>
+
+    <definition name="adminPages/adminMenu" extends="default">
+        <put-attribute name="title" value="Menu"/>
+        <put-attribute name="body" value="/WEB-INF/view/adminPages/adminMenu.jsp"/>
+    </definition>
+    
+     <definition name="adminPages/adminPage" extends="default">
+        <put-attribute name="title" value="Menu"/>
+        <put-attribute name="body" value="/WEB-INF/view/adminPages/adminPage.jsp"/>
+    </definition>
+   
+     <definition name="adminPages/genreList" extends="default">
+        <put-attribute name="title" value="Genre"/>
+        <put-attribute name="body" value="/WEB-INF/view/adminPages/genreList.jsp"/>
+    </definition>
+    
+     <definition name="adminPages/orderList" extends="default">
+        <put-attribute name="title" value="Menu"/>
+        <put-attribute name="body" value="/WEB-INF/view/adminPages/orderList.jsp"/>
+    </definition>
+    
+    <definition name="view/adminLogin" extends="default">
+        <put-attribute name="title" value="Login"/>
+        <put-attribute name="body" value="/WEB-INF/view/adminLogin.jsp"/>
+    </definition>
+     <definition name="login" extends="default">
+        <put-attribute name="title" value="Login"/>
+        <put-attribute name="body" value="login.jsp"/>
+    </definition>
+    
+    <!-- user view -->
+    
+     <definition name="userPages/userMenu" extends="default">
+        <put-attribute name="title" value="Menu"/>
+        <put-attribute name="body" value="/WEB-INF/view/userPages/userMenu.jsp"/>
+    </definition>
+     <definition name="userPages/userPage" extends="default">
+        <put-attribute name="title" value="Menu"/>
+        <put-attribute name="body" value="/WEB-INF/view/userPages/userPage.jsp"/>
+    </definition>
+     <definition name="userPages/userBooks" extends="default">
+        <put-attribute name="title" value="Menu"/>
+        <put-attribute name="body" value="/WEB-INF/view/userPages/userBooks.jsp"/>
+    </definition>
+    
+     <definition name="view/login" extends="default">
+        <put-attribute name="title" value="Menu"/>
+        <put-attribute name="body" value="/WEB-INF/view/login.jsp"/>
+    </definition>
+
+    <definition name="login" extends="default">
+        <put-attribute name="title" value="Login page"/>
+    </definition>
+</tiles-definitions>
+

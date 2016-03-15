@@ -1,0 +1,34 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+             http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+             http://www.springframework.org/schema/security
+             http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+    <http auto-config="true">
+        <intercept-url pattern="/**" access="permitAll"/>
+       <logout logout-success-url="/index.jsp" />
+        <!-- <intercept-url pattern="/menu" access="permitAll"/>
+         <intercept-url pattern="/login**" access="permitAll"/>
+        <intercept-url pattern="/admin**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/user**" access="hasRole('USER')"/>
+        ???? -->
+        <form-login login-page="/login"
+        login-processing-url="/j_spring_security_check"
+                    username-parameter="j_username"
+                    password-parameter="j_password"
+                    default-target-url="/menu"
+                    
+                    authentication-failure-url="/login.jsp?error=invalidLoginPassword"/>
+        <csrf/>
+    </http>
+
+    <authentication-manager>
+        <authentication-provider user-service-ref="authService"/>
+    </authentication-manager>
+
+    <beans:bean id="authService" class="auth.AuthenticationService"/>
+
+</beans:beans>
+
