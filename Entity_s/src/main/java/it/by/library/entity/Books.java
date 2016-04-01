@@ -6,8 +6,6 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
 @Table(name="books")
 public class Books extends Model {
@@ -30,12 +28,10 @@ public class Books extends Model {
 	
 	@DecimalMax(value = "99", message = "Digit must be a less than 99")
     @DecimalMin(value = "0", message = "Digit must be a greater than 0")
-	//@Pattern(regexp = "[0-9]{2}", message = "not correctly entered data")
 	@NotNull(message = "The above field must not be blank.")
 	@Column(name="count", nullable = false)
 	private Integer count;
 	
-	//@ManyToOne(fetch=FetchType.LAZY)
 	@ManyToOne
 	@JoinColumn(name = "id_genre", referencedColumnName="id")
 	private Genres genres;

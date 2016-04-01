@@ -9,7 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import it.by.library.dao.exception.DaoException;
 
-
+/**
+ * Class describes standard method used for persisting operations
+ * with DB in hibernate session.
+ * @author Ilya
+ *
+ * @param <T>
+ */
 @Repository()
 public class BaseDao<T> implements Dao<T> {
 	

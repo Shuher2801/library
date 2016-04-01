@@ -15,11 +15,7 @@
         </div>
         
          <div class="privateInfo">
-        <!--    <sec:authorize ifAnyGranted="USER, ADMIN">
-                <span> <sec:authentication property="principal.displayName"/></span>
-                <c:url var="logout" value="/j_spring_security_logout"/>
-                <a class="logout" href="${logout}" id="logOutButton">Log Out</a>
-            </sec:authorize>-->
+ 
         </div>  
 
     </header>

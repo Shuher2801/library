@@ -24,10 +24,7 @@
  <div style="float: right;">
  <strong>${user}</strong>
  </div>
-<!--  <div style="float: right;">
-    <a href="../person/persons.form?locale=ru" style="padding: 5px">RU</a>
-    <a href="../person/persons.form?locale=en" style="padding: 5px">EN</a>
-</div>-->
+
 
 <tiles:insertAttribute name="header"/>
 <tiles:insertAttribute name="body"/>

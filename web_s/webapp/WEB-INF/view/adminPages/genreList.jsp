@@ -33,21 +33,6 @@
 
 
 <sf:url var="saveUrl" value="addGenre" />
-<!--  
-<form:form modelAttribute="genre" method="POST" action="${saveUrl}" >
-    <table>
-        <tr>
-            <td><form:label path="genre">Genre:</form:label></td>
-            <td><form:input path="genre" name="genre" value="" /></td>
-        </tr>
-    </table>
-    <font color="red" face="Arial">${errorDataMessage}</font><br />
-		  <font color="red" face="Arial"> ${emptyData}</font><br />
-		  <font color="red" face="Arial"> ${errorCantRemoveMessage}</font><br />
-    
-    <input type="submit" value="Save" />
-</form:form> -->
-
 
 <s:form modelAttribute="genre" method="POST" action="${saveUrl}" >
    <fieldset> 
@@ -63,24 +48,6 @@
     </fieldset>
 </s:form>
 
-
-
-
-
-<!-- 
-<form action="addGenre" method="POST">
-
-		<input type="hidden" name="command" value="addGenre" />
-		 <input type="text" name="a2" maxlength="50">Genre<br />
-		 <font color="red" face="Arial">${errorDataMessage}</font><br />
-		  <font color="red" face="Arial"> ${emptyData}</font><br />
-		  <font color="red" face="Arial"> ${errorCantRemoveMessage}</font><br />
-		  <br>
-		<input type="submit" name="ok" value="ok ">
-
-	</form>
-	-->
-	
 	
 <br>
 <form action="/web_s/adminMenu" method = "GET">
@@ -93,12 +60,6 @@
 	 <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}">
 			<input type="submit" value="Logout">
 	</form>
-
-
-
-
-
-
 
 
 </body>

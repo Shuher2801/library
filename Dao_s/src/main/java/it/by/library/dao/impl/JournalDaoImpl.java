@@ -17,7 +17,18 @@ import it.by.library.dao.exception.DaoException;
 import it.by.library.entity.Books;
 import it.by.library.entity.Journal;
 import it.by.library.entity.Users;
-
+/**
+ * The class extends the standard DAO methods for journal. 
+ * It adds methods for extracting a list of all  positions from journal, 
+ * a list of all positions from journal by name of user,
+ * a list of  positions where books weren't returned,
+ * a list of  positions where books were returned,
+ * a list of all positions from journal by book
+ * 
+ 
+ * @author Ilya
+ *
+ */
 @Repository()
 public class JournalDaoImpl extends BaseDao<Journal> implements IJournalDao {
 	private static Logger log = Logger.getLogger(JournalDaoImpl.class);
@@ -28,7 +39,7 @@ public class JournalDaoImpl extends BaseDao<Journal> implements IJournalDao {
 	/**
 	 * select all positions from journal
 	 * 
-	 * @return
+	 * @return List<Journal>
 	 * @throws DaoException
 	 */
 	@SuppressWarnings("unchecked")
@@ -49,7 +60,7 @@ public class JournalDaoImpl extends BaseDao<Journal> implements IJournalDao {
 	/**
 	 * finds positions by user
 	 * 
-	 * @return
+	 * @return List<Journal>
 	 * @throws DaoException
 	 */
 	@SuppressWarnings("unchecked")
@@ -72,7 +83,7 @@ public class JournalDaoImpl extends BaseDao<Journal> implements IJournalDao {
 	 * Select positions where books weren't returned
 	 * 
 	 * @param
-	 * @return
+	 * @return List<Journal>
 	 * @throws DaoException
 	 */
 	@SuppressWarnings("unchecked")
@@ -94,7 +105,7 @@ public class JournalDaoImpl extends BaseDao<Journal> implements IJournalDao {
 	/**
 	 * Select positions where books were returned
 	 * 
-	 * @return
+	 * @return List<Journal>
 	 * @throws DaoException
 	 */
 	@SuppressWarnings("unchecked")
@@ -141,7 +152,7 @@ public class JournalDaoImpl extends BaseDao<Journal> implements IJournalDao {
 	 * Select position from Journal by book
 	 * 
 	 * @param book
-	 * @return
+	 * @return List<Journal>
 	 * @throws DaoException
 	 */
 	@SuppressWarnings("unchecked")

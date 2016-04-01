@@ -14,9 +14,18 @@ import it.by.library.dao.IBookDao;
 import it.by.library.dao.exception.DaoException;
 import it.by.library.entity.Books;
 
+/**
+ * The class extends the standard DAO methods for books. 
+ * It adds methods for extracting a list of all books, 
+ * a list of books by name of a genre,
+ * and method for pagination
+ * 
+ * @author Ilya
+ *
+ */
 @Repository()
 public class BookDaoImpl extends BaseDao<Books> implements IBookDao {
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -48,7 +57,7 @@ public class BookDaoImpl extends BaseDao<Books> implements IBookDao {
 	 * selects all books from database by genre
 	 * 
 	 * @param id
-	 * @return
+	 * @return List<Books>
 	 * @throws DaoException
 	 */
 	@SuppressWarnings("unchecked")
@@ -75,15 +84,13 @@ public class BookDaoImpl extends BaseDao<Books> implements IBookDao {
 	 * 
 	 * @param offset
 	 * @param maxResults
-	 * @return
+	 * @return List<Books>
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Books> list(Integer offset, Integer maxResults) {
-		return getSession().createCriteria(Books.class)
-				.setFirstResult(offset != null ? offset : 0)
-				.setMaxResults(maxResults != null ? maxResults : 10)
-				.list();
+		return getSession().createCriteria(Books.class).setFirstResult(offset != null ? offset : 0)
+				.setMaxResults(maxResults != null ? maxResults : 10).list();
 	}
 
 	/**

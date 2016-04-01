@@ -14,15 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import it.by.library.entity.Books;
-import it.by.library.entity.Genres;
 import it.by.library.entity.Journal;
 import it.by.library.entity.Users;
 import it.by.library.services.IBookService;
-import it.by.library.services.IGenreService;
 import it.by.library.services.IJournalService;
 import it.by.library.services.IUserService;
 import it.by.library.services.exception.ServiceException;
-
+import resources.ConfigurationManager;
+/**
+ * this controller is responsible for displaying a list of books the user and a selection of books  
+ * @author Ilya
+ *
+ */
 @Controller
 @RequestMapping("/userPages")
 public class UserController {
@@ -32,14 +35,16 @@ public class UserController {
 	private IJournalService journalServices;
 
 	@Autowired
-	private IGenreService genreServices;
-
-	@Autowired
 	private IBookService booksServices;
 
 	@Autowired
 	private IUserService userServices;
-
+/**
+ * Method for a selection of books 
+ * @param model
+ * @param s - Long[]
+ * @return logical name of view
+ */
 	@RequestMapping(value = "/selectBooks", method = { RequestMethod.POST, RequestMethod.GET })
 	public String selectBook(ModelMap model, @RequestParam("idBook") Long[] s) {
 
@@ -78,8 +83,7 @@ public class UserController {
 		}
 		model.put("journal", list);
 
-		// page = ConfigurationManager.getProperty("path.page.userBooks");
-		page = "userPages/userBooks";
+	    page = ConfigurationManager.getProperty("path.page.userBooks");
 		return page;
 	}
 
@@ -94,7 +98,11 @@ public class UserController {
 		}
 		return userName;
 	}
-
+/**
+ * Method for displaying a list of books the user
+ * @param model
+ * @return logical name of view
+ */
 	@RequestMapping(value = "/userBooks", method = { RequestMethod.POST, RequestMethod.GET })
 	public String displayBook(ModelMap model) {
 
@@ -112,11 +120,15 @@ public class UserController {
 		}
 		model.put("journal", list);
 
-		// page = ConfigurationManager.getProperty("path.page.userBooks");
-		String page = "userPages/userBooks";
+		String page = ConfigurationManager.getProperty("path.page.userBooks");
 		return page;
 	}
-
+/**
+ * Method for pagination
+ * @param model
+ * @param page
+ * @return logical name of view
+ */
 	@RequestMapping(value = "/userPage/{page}", method = { RequestMethod.POST, RequestMethod.GET })
 	public String execute(ModelMap model, @PathVariable Integer page) {
 

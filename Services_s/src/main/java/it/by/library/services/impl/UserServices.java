@@ -16,7 +16,11 @@ import it.by.library.entity.Users;
 import it.by.library.services.BaseService;
 import it.by.library.services.IUserService;
 import it.by.library.services.exception.ServiceException;
-
+/**
+ * service methods class for users
+ * @author Ilya
+ *
+ */
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
 public class UserServices extends BaseService<Users>  implements IUserService{

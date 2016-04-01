@@ -13,7 +13,13 @@ import it.by.library.dao.BaseDao;
 import it.by.library.dao.IGenreDao;
 import it.by.library.dao.exception.DaoException;
 import it.by.library.entity.Genres;
-
+/**
+ * The class extends the standard DAO methods for genres. 
+ * It adds methods for extracting a list of all genres, 
+ * a list of genres by name of a genre
+ * @author Ilya
+ *
+ */
 @Repository()
 public class GenreDaoImpl extends BaseDao<Genres> implements IGenreDao {
 
@@ -27,6 +33,8 @@ public class GenreDaoImpl extends BaseDao<Genres> implements IGenreDao {
 
 	/**
 	 * Select list of genres from database
+	 * @return List<Genres>
+	 * @throws DaoException
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
@@ -47,7 +55,7 @@ public class GenreDaoImpl extends BaseDao<Genres> implements IGenreDao {
 	 * Selects genre by name of a genre
 	 * 
 	 * @param name
-	 * @return
+	 * @return Genres genre
 	 * @throws DaoException
 	 */
 	@Override

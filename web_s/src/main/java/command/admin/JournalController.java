@@ -16,11 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.by.library.entity.Journal;
 import it.by.library.services.IJournalService;
 import it.by.library.services.exception.ServiceException;
+import resources.ConfigurationManager;
 
 /**
- * displays Journal list where books were not returned
+ * This controller is responsible for displaying Journal list where books were not returned
  * 
- * @author NotePad.by
+ * @author Ilya
  *
  */
 @Controller
@@ -35,11 +36,15 @@ public class JournalController {
 		String page = null;
 		display(model);
 
-		// page = ConfigurationManager.getProperty("path.page.orderList");
-		page = "adminPages/orderList";
+		page = ConfigurationManager.getProperty("path.page.orderList");
 		return page;
 	}
-
+/**
+ * displays Journal list where books were not returned
+ * @param a
+ * @param model
+ * @return logical name of view
+ */
 	@RequestMapping(value = "/bookWasReturened", method = RequestMethod.GET)
 	public String bookWasReturened(@RequestParam("id") String a, ModelMap model) {
 		Long id = Long.parseLong(a);
@@ -83,11 +88,8 @@ public class JournalController {
 
 		display(model);
 
-		
-		// ConfigurationManager.getProperty("path.page.orderList");
-		String page = "adminPages/orderList";
+		String page = ConfigurationManager.getProperty("path.page.orderList");
 		return page;
-
 	}
 
 	public void display(ModelMap model) {

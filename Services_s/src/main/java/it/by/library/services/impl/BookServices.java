@@ -13,7 +13,11 @@ import it.by.library.entity.Books;
 import it.by.library.services.BaseService;
 import it.by.library.services.IBookService;
 import it.by.library.services.exception.ServiceException;
-
+/**
+ *  service methods class for books
+ * @author Ilya
+ *
+ */
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
 public class BookServices extends BaseService<Books> implements IBookService {
@@ -51,7 +55,7 @@ public class BookServices extends BaseService<Books> implements IBookService {
 	 * 
 	 * @param offset
 	 * @param maxResults
-	 * @return
+	 * @return List<Books>
 	 */
 	@Override
 	public List<Books> list(Integer offset, Integer maxResults) {

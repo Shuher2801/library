@@ -20,8 +20,13 @@ import it.by.library.services.IBookService;
 import it.by.library.services.IGenreService;
 import it.by.library.services.IJournalService;
 import it.by.library.services.exception.ServiceException;
+import resources.ConfigurationManager;
 import resources.MessageManager;
-
+/**
+ * This controller is responsible for adding and deleting books
+ * @author Ilya
+ *
+ */
 @Controller
 @RequestMapping("/adminPages")
 public class AdminBooksController {
@@ -35,7 +40,12 @@ public class AdminBooksController {
 
 	@Autowired
 	private IBookService booksServices;
-
+/**
+ * Method for displaying all books
+ * @param model
+ * @param page
+ * @return logical name of view
+ */
 	@RequestMapping(value = "/adminPage/{page}", method = { RequestMethod.POST, RequestMethod.GET })
 	public String execute(ModelMap model, @PathVariable Integer page) {
 
@@ -67,9 +77,16 @@ public class AdminBooksController {
 		}
 		model.put("genre", genres);
 
-		return "adminPages/adminPage";
+		return  ConfigurationManager.getProperty("path.page.adminPage");
 	}
-
+/**
+ * Method for addition book to library with validation parameters from form
+ * @param book - entity from form
+ * @param br -  error check
+ * @param model
+ * @param g
+ * @return
+ */
 	@RequestMapping(value = "/addBook", method = RequestMethod.POST)
 	public String addBook(@ModelAttribute("book") @Valid Books book, BindingResult br, ModelMap model,
 			@RequestParam("g") String g) {
@@ -93,9 +110,14 @@ public class AdminBooksController {
 		} 
 		
 
-		return "adminPages/adminPage";
+		return page = ConfigurationManager.getProperty("path.page.adminPage");
 	}
-
+/**
+ * Method for removal book
+ * @param a
+ * @param model
+ * @return logical name of view
+ */
 	@RequestMapping(value = "/deleteBook", method = RequestMethod.GET)
 	public String execute(@RequestParam("id") String a, ModelMap model) {
 		String page = null;
@@ -119,18 +141,19 @@ public class AdminBooksController {
 			}
 			display(model);
 
-			// page = ConfigurationManager.getProperty("path.page.adminPage");
-			page = "adminPages/adminPage";
+			 page = ConfigurationManager.getProperty("path.page.adminPage");
 			return page;
 		} else {
 			display(model);
 			model.put("errorCantRemoveMessage", MessageManager.getProperty("message.wrongremove_book"));
-			// page = ConfigurationManager.getProperty("path.page.adminPage");
-			page = "adminPages/adminPage";
+			 page = ConfigurationManager.getProperty("path.page.adminPage");
 		}
 		return page;
 	}
-
+/**
+ * Method for pagination
+ * @param model
+ */
 	public void display(ModelMap model) {
 
 		int pageB = 1;

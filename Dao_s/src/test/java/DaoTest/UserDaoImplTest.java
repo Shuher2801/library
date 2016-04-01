@@ -7,11 +7,14 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.by.library.dao.exception.DaoException;
+import it.by.library.dao.impl.BookDaoImpl;
+import it.by.library.dao.impl.GenreDaoImpl;
 import it.by.library.dao.impl.UserDaoImpl;
 import it.by.library.entity.Users;
 
@@ -20,60 +23,54 @@ import it.by.library.entity.Users;
 @Transactional()
 public class UserDaoImplTest {
 
-/*	@Test
+	
+	@Autowired
+	private UserDaoImpl userDaoImpl;
+
+	@Autowired
+	private GenreDaoImpl genreDaoImpl;
+	
+	@Test
 	public void getByIdTest() {
 		Users t = null;
 		try {
-			t = (Users) dao.getById(1L);
+			t = (Users) userDaoImpl.getById(1L);
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
-		session.close();
 		assertNotNull(t);
 	}
 
 	@Test
 	public void addTest() {
-		
-		Users t = new Users("1", "1", true);
+		Long id=null;
+		//Users t = new Users("154", "154", true);
+		Users t = new Users();
+		t.setName("154");
+		t.setPassword("154");
+		t.setValid(true);
 		try {
-			transaction = session.beginTransaction();
-			dao.add(t);
-			Long id = t.getId();
+			userDaoImpl.add(t);
+			id = t.getId();
 
-			Users us2 = (Users) dao.getById(id);
+			Users us2 = (Users) userDaoImpl.getById(id);
 
 			assertNotNull(us2);
-			assertEquals("1", us2.getName());
-			assertEquals("1", us2.getPassword());
+			assertEquals("154", us2.getName());
+			assertEquals("154", us2.getPassword());
 
 		} catch (DaoException e) {
 			e.printStackTrace();
-		} finally {
-			transaction.rollback();
-			session.close();
-		}
+		} 
+		try {
+			userDaoImpl.remove(id);
+			assertNull(userDaoImpl.getById(id));
 
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
-	@Test
-	public void removeTest() {
-		
-		Users t = new Users("1", "1", true);
-		try {
-			transaction = session.beginTransaction();
-			dao.add(t);
-			Long id = t.getId();
 
-			dao.remove(id);
-
-			assertNull(dao.getById(id));
-		} catch (DaoException e) {
-			e.printStackTrace();
-		} finally {
-			transaction.rollback();
-			session.close();
-		}
-
-	}*/
 }

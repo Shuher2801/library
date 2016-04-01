@@ -117,50 +117,6 @@
     <input type="submit" value="Save" />
 </form:form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<!-- form action="admin" 
-	<form action="addBook" method ="POST">
-
-		<input type="hidden" name="command" value="add" />
-		 <input type="text" name="a2" maxlength="100">Book<br />
-	     <input type="text" name="a3" maxlength="100">Author<br /> 
-	     <input type="text" name="a4"maxlength="50">Publisher<br />
-	    <input type="text" name="a5" maxlength="30"> Date publication<br />
-	
-	 
-	 <select name="g" >
-	 <option disabled>choose genre</option>
-	 <c:forEach items="${sessionScope.genre}" var="d">
-	 <option value="${d.genre}">${d.genre}</option>
-	 </c:forEach>
-	 </select><br />
-	 
-	 
-	     <input type="text" name="a7" maxlength="2" >number<br />
-	     <font color="red" face="Arial">${errorDataMessage}</font><br />
-	     <font color="red" face="Arial">${errorCantRemoveMessage}</font><br />
-	     <font color="red" face="Arial">${errorDigitMessage}</font><br />
-	     <br />
-		 <input type="reset" value="reset">
-		<input type="submit" name="ok" value="ok ">
-
-	</form> -->
 <br>
 <form action="/web_s/adminMenu" method = "GET">
 	 <input	type="submit" value="Menu">

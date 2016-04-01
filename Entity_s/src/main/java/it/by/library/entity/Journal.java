@@ -21,13 +21,10 @@ public class Journal extends Model {
 	
 
 	private static final long serialVersionUID = -4643690669074808483L;
-	//@ManyToOne(fetch=FetchType.LAZY)
 	@ManyToOne
 	@JoinColumn(name="book_id", referencedColumnName="id")
 	private Books books;
 	
-	
-	//@ManyToOne(fetch=FetchType.LAZY)
 	@ManyToOne
 	@JoinColumn(name="user_id", referencedColumnName="id")
 	private Users users;
@@ -35,12 +32,10 @@ public class Journal extends Model {
 	@Column(name="date_time_take")
 	private Date date_time_take;
 	
-	//!!!!!   private GregorianCalendar calendar;
 	
 	@Column(name="date_time_return")
 	private Date date_time_return;
 	
-	//private boolean only_for_room;
 	
 	public  Journal(){
 		super();

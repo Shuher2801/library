@@ -5,18 +5,13 @@ import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "genres")
-// @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Genres extends Model {
 	private static final long serialVersionUID = -2175999949976243074L;
 
 	@Column(name = "genre", unique = true, nullable = false)
 	@Pattern(regexp = "[a-z]+$", message = "not correctly entered data")
 	private String genre;
-	/*
-	 * @OneToMany(mappedBy="genres", fetch=FetchType.LAZY) private List<Books>
-	 * books = new ArrayList<>();
-	 */
-
+	
 	public Genres() {
 		super();
 	}

@@ -2,7 +2,6 @@ package command.admin;
 
 import java.util.List;
 
-import javax.persistence.SequenceGenerator;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -16,17 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import it.by.library.dao.exception.DaoException;
 import it.by.library.entity.Genres;
 import it.by.library.services.IGenreService;
 import it.by.library.services.IJournalService;
 import it.by.library.services.exception.ServiceException;
-import it.by.library.services.impl.GenreServices;
-import it.by.library.services.impl.JournalServices;
+import resources.ConfigurationManager;
 import resources.MessageManager;
 
 /**
- * Display all genres
+ * This controller is responsible for displaying, adding and deleting genres
  * 
  * @author NotePad.by
  *
@@ -41,13 +38,23 @@ public class GenreController {
 
 	@Autowired
 	private IJournalService journalServices;
-
+/**
+ * Display all genres
+ * @param model
+ * @return logical name of view
+ */
 	@RequestMapping(value = "/genreList", method = RequestMethod.POST)
 	public String displayGenre(ModelMap model) {
 		display(model);
-		return "adminPages/genreList";
+		return ConfigurationManager.getProperty("path.page.genreList");
 	}
-
+/**
+ * Method for addition genres
+ * @param model
+ * @param genre - entity from form
+ * @param br - error check
+ * @return logical name of view
+ */
 	@RequestMapping(value = "/addGenre", method = RequestMethod.POST)
 	@Secured(value = { "USER" })
 	public String addGenre(ModelMap model, @ModelAttribute("genre") @Valid Genres genre, BindingResult br) {
@@ -59,7 +66,6 @@ public class GenreController {
 				e.printStackTrace();
 				model.put("genre", genre);
 			}
-			// display(model);
 			List<Genres> genres = null;
 			try {
 				genres = genreServices.getAll();
@@ -81,9 +87,14 @@ public class GenreController {
 
 			model.put("genres", genres);
 		}
-		return page = "adminPages/genreList";
+		return page = ConfigurationManager.getProperty("path.page.genreList");
 	}
-
+/**
+ * Method for deleting genres
+ * @param id
+ * @param model
+ * @return logical name of view
+ */
 	@RequestMapping(value = "/deleteGenre", method = RequestMethod.GET)
 	public String removeGenre(@RequestParam("id") String id, ModelMap model) {
 		String page = null;
@@ -108,14 +119,14 @@ public class GenreController {
 
 			display(model);
 
-			page = "adminPages/genreList";
+			page = ConfigurationManager.getProperty("path.page.genreList");
 
 		} else {
 
 			display(model);
 
 			model.put("errorCantRemoveMessage", MessageManager.getProperty("message.wrongremove"));
-			page = "adminPages/genreList";
+			page = ConfigurationManager.getProperty("path.page.genreList");
 		}
 
 		return page;
