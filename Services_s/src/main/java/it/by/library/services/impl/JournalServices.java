@@ -45,6 +45,8 @@ public class JournalServices extends BaseService <Journal> implements IJournalSe
 	@Override
 	public List<Journal> getAll() throws ServiceException {
 
+		// it's not recommended to initialize variables by null value, because they are null by default.
+		// If you don't initialize it at all IDE wiil highlight such variable 
 		List<Journal> list = null;
 		try {
 			list = journalDao.getAll();
