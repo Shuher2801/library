@@ -41,7 +41,7 @@ public class GenreServices extends BaseService<Genres> implements IGenreService 
 	 */
 	@Override
 	public Genres getByGenre(String name) throws ServiceException {
-		Genres genre = null;
+		Genres genre;
 		try {
 			genre = (Genres) genreDao.getByGenre(name);
 		} catch (DaoException e) {
@@ -60,7 +60,7 @@ public class GenreServices extends BaseService<Genres> implements IGenreService 
 	 */
 	@Override
 	public List<Genres> getAll() throws ServiceException {
-		List<Genres> list = null;
+		List<Genres> list;
 		try {
 
 			list = genreDao.getAll();

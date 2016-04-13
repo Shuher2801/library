@@ -40,7 +40,7 @@ public class UserServices extends BaseService<Users>  implements IUserService{
 	public List<Users> getUsers(Users user) throws ServiceException {
 		
 		log.info("Get: " + user.getName());
-		 List<Users> us=null;
+		 List<Users> us;
 		try {
 			 us = userDao.getUser(user);
 		} catch (DaoException e) {
@@ -52,7 +52,7 @@ public class UserServices extends BaseService<Users>  implements IUserService{
 
 	@Override
 	public Users getUserByName(String userName) throws ServiceException {
-		Users us=null;
+		Users us;
 		try {
 			 us = userDao.getUserByName(userName);
 		} catch (DaoException e) {

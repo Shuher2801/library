@@ -24,7 +24,7 @@ public class BaseService<T> implements Services<T> {
 
 	@Override
 	public T getById(Long id) throws ServiceException {
-		T t = null;
+		T t;
 		try {
 			t = baseDao.getById(id);
 		} catch (DaoException e) {

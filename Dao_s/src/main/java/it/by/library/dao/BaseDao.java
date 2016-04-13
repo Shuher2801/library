@@ -36,7 +36,7 @@ public class BaseDao<T> implements Dao<T> {
 	@Override
 	public T getById(Long id) throws DaoException {
 		log.info("Get class by id:" + id);
-		T t = null;
+		T t ;
 		try {
 			Class<T> res = getPersistentClass();
 			t = (T) getSession().get(res, id);
@@ -56,10 +56,7 @@ public class BaseDao<T> implements Dao<T> {
 	public void add(T model) throws DaoException {
 		try {
 			getSession().saveOrUpdate(model);
-			getSession().update(model);
-
 			log.info("saveOrUpdate(t):" + model);
-			log.info("Save or update (commit):" + model);
 		} catch (HibernateException e) {
 			log.error("Error save or update" + model + " in Dao" + e);
 			throw new DaoException(e);
@@ -73,10 +70,10 @@ public class BaseDao<T> implements Dao<T> {
 	public void update(T model) throws DaoException {
 		try {
 			getSession().update(model);
-			log.info("saveOrUpdate(t):" + model);
+			log.info("Update(t):" + model);
 			log.info("Save or update (commit):" + model);
 		} catch (HibernateException e) {
-			log.error("Error save or update" + model + " in Dao" + e);
+			log.error("Error update" + model + " in Dao" + e);
 			throw new DaoException(e);
 		}
 	}

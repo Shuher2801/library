@@ -48,7 +48,7 @@ public class UserController {
 	@RequestMapping(value = "/selectBooks", method = { RequestMethod.POST, RequestMethod.GET })
 	public String selectBook(ModelMap model, @RequestParam("idBook") Long[] s) {
 
-		String page = null;
+		String page;
 
 		long curTime = System.currentTimeMillis();
 		Date curDate = new Date(curTime);

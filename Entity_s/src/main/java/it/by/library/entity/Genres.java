@@ -9,7 +9,7 @@ public class Genres extends Model {
 	private static final long serialVersionUID = -2175999949976243074L;
 
 	@Column(name = "genre", unique = true, nullable = false)
-	@Pattern(regexp = "[a-z]+$", message = "not correctly entered data")
+	@Pattern(regexp = "[a-zA-Z]+$", message = "not correctly entered data")
 	private String genre;
 	
 	public Genres() {

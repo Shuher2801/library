@@ -38,10 +38,10 @@ public class BookDaoImpl extends BaseDao<Books> implements IBookDao {
 	@Override
 	public List<Books> getAll() throws DaoException {
 
-		List<Books> results = null;
+		List<Books> results;
 		try {
 			String hql = "FROM Books";
-			Query query = null;
+			Query query;
 			query = getSession().createQuery(hql);
 			results = query.list();
 
@@ -65,7 +65,7 @@ public class BookDaoImpl extends BaseDao<Books> implements IBookDao {
 	public List<Books> getByGenre(Long id) throws DaoException {
 		log.info("Delete class by id:" + id);
 		Books t = null;
-		List<Books> list = null;
+		List<Books> list;
 		try {
 			String hql = "Select b from Books b  where genres.id=:id";
 			Query query = getSession().createQuery(hql);

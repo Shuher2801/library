@@ -45,7 +45,7 @@ public class JournalDaoImpl extends BaseDao<Journal> implements IJournalDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Journal> getAll() throws DaoException {
-		List<Journal> list = null;
+		List<Journal> list;
 		try {
 			String hql = "FROM Journal";
 			Query query = getSession().createQuery(hql);
@@ -66,7 +66,7 @@ public class JournalDaoImpl extends BaseDao<Journal> implements IJournalDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Journal> getByUser(Users user) throws DaoException {
-		List<Journal> list = null;
+		List<Journal> list;
 		try {
 			String hql = "Select J FROM Journal J where users =:user";
 			Query query = getSession().createQuery(hql);
@@ -89,7 +89,7 @@ public class JournalDaoImpl extends BaseDao<Journal> implements IJournalDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Journal> getByTime() throws DaoException {
-		List<Journal> list = null;
+		List<Journal> list;
 		try {
 			Criteria crit = getSession().createCriteria(Journal.class);
 			crit.add(Restrictions.isNull("date_time_return"));
@@ -111,7 +111,7 @@ public class JournalDaoImpl extends BaseDao<Journal> implements IJournalDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Journal> getByTimeReturn() throws DaoException {
-		List<Journal> list = null;
+		List<Journal> list;
 		try {
 			Criteria crit = getSession().createCriteria(Journal.class);
 			crit.add(Restrictions.isNotNull("date_time_return"));
@@ -158,7 +158,7 @@ public class JournalDaoImpl extends BaseDao<Journal> implements IJournalDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Journal> getByBook(Books book) throws DaoException {
-		List<Journal> list = null;
+		List<Journal> list;
 		try {
 			String hql = "Select J FROM Journal J where books =:books";
 			Query query = getSession().createQuery(hql);

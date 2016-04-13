@@ -55,16 +55,16 @@ public class GenreController {
  * @param br - error check
  * @return logical name of view
  */
+	
 	@RequestMapping(value = "/addGenre", method = RequestMethod.POST)
 	@Secured(value = { "USER" })
 	public String addGenre(ModelMap model, @ModelAttribute("genre") @Valid Genres genre, BindingResult br) {
-		String page = null;
+		String page ;
 		if (!br.hasErrors()) {
 			try {
 				genreServices.add(genre);
 			} catch (ServiceException e) {
 				e.printStackTrace();
-				model.put("genre", genre);
 			}
 			List<Genres> genres = null;
 			try {
@@ -75,6 +75,9 @@ public class GenreController {
 			}
 
 			model.put("genres", genres);
+			Genres genre1 = new Genres();
+
+			model.put("genre", genre1);
 
 		} else {
 			List<Genres> genres = null;
@@ -86,9 +89,13 @@ public class GenreController {
 			}
 
 			model.put("genres", genres);
+	
 		}
 		return page = ConfigurationManager.getProperty("path.page.genreList");
 	}
+	
+	
+	
 /**
  * Method for deleting genres
  * @param id
@@ -97,7 +104,7 @@ public class GenreController {
  */
 	@RequestMapping(value = "/deleteGenre", method = RequestMethod.GET)
 	public String removeGenre(@RequestParam("id") String id, ModelMap model) {
-		String page = null;
+		String page;
 		Long n = Long.parseLong(id);
 		boolean flag = false;
 

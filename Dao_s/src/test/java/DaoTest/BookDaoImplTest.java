@@ -47,7 +47,7 @@ public class BookDaoImplTest {
 	@Test
 	public void addTest() {
 		long id = 0;
-		Books t = new Books("eee", "eee", "eee", "eee", 1);
+		Books t = new Books("eee", "eee", "12", "eee", 1);
 		try {
 
 			bookDaoImpl.add(t);
@@ -58,7 +58,7 @@ public class BookDaoImplTest {
 			assertNotNull(book2);
 			assertEquals("eee", book2.getName_book());
 			assertEquals("eee", book2.getAuthor());
-			assertEquals("eee", book2.getPublication_date());
+			assertEquals("12", book2.getPublication_date());
 			assertEquals("eee", book2.getPublisher());
 			assertEquals(1, (long) book2.getCount());
 
@@ -77,7 +77,7 @@ public class BookDaoImplTest {
 	public void removeByBookTest() {
 
 		long id = 0;
-		Books t = new Books("eee", "eee", "eee", "eee", 1);
+		Books t = new Books("eee", "eee", "12", "eee", 1);
 		try {
 
 			bookDaoImpl.add(t);
@@ -102,7 +102,7 @@ public class BookDaoImplTest {
 	public void updateTest() {
 		Long idBook = null;
 		Books t = null;
-		t = new Books("eee", "eee", "eee", "eee", 1);
+		t = new Books("eee", "eee", "12", "eee", 1);
 		try {
 			bookDaoImpl.add(t);
 		} catch (DaoException e1) {
@@ -116,10 +116,10 @@ public class BookDaoImplTest {
 			e.printStackTrace();
 		}
 		assertNotNull(book2);
-		assertEquals("1", book2.getName_book());
-		assertEquals("1", book2.getAuthor());
-		assertEquals("1", book2.getPublication_date());
-		assertEquals("1", book2.getPublisher());
+		assertEquals("eee", book2.getName_book());
+		assertEquals("eee", book2.getAuthor());
+		assertEquals("12", book2.getPublication_date());
+		assertEquals("eee", book2.getPublisher());
 	    assertEquals(1,(long) book2.getCount());
 		try {
 			bookDaoImpl.remove(idBook);
@@ -139,7 +139,7 @@ public class BookDaoImplTest {
 			genreDaoImpl.add(genre);
 			id = genre.getId();
 
-			t = new Books("eee", "eee", "eee", "eee", 1);
+			t = new Books("eee", "eee", "12", "eee", 1);
 			t.setGenres(genre);
 			bookDaoImpl.add(t);
 			idBook = t.getId();
@@ -151,7 +151,7 @@ public class BookDaoImplTest {
 			assertEquals(1, list.size());
 			assertEquals("eee", book2.getName_book());
 			assertEquals("eee", book2.getAuthor());
-			assertEquals("eee", book2.getPublication_date());
+			assertEquals("12", book2.getPublication_date());
 			assertEquals("eee", book2.getPublisher());
 			assertEquals(1, (long) book2.getCount());
 
@@ -179,7 +179,7 @@ public class BookDaoImplTest {
 			List<Books> list = bookDaoImpl.getAll();
 			int sizeList = list.size();
 
-			t = new Books("eee", "eee", "eee", "eee", 1);
+			t = new Books("eee", "eee", "12", "eee", 1);
 			bookDaoImpl.add(t);
 			idBook = t.getId();
 

@@ -33,7 +33,7 @@ public class BookServices extends BaseService<Books> implements IBookService {
 	@Override
 	public List<Books> findAll() throws ServiceException {
 
-		List<Books> list = null;
+		List<Books> list;
 		try {
 
 			list = bookDao.getAll();

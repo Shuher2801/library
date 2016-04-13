@@ -5,24 +5,35 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="books")
 public class Books extends Model {
 	private static final long serialVersionUID = -247300301612287790L;
 	
-	@Pattern(regexp = "[a-z]{1,50}", message = "not correctly entered data")
+	//@Pattern(regexp = "[a-z]{1,50}", message = "not correctly entered data")
+	@Pattern(regexp = "[^а-яА-я]+$", message = "not correctly entered data")
+	@Size(min = 2, max = 250, 
+	message="Title must be between 2 and 250 characters long.")
 	@Column(name="name_book",nullable = false)
 	private String name_book;
 	
 	
-	@Pattern(regexp = "[a-z]+$", message = "not correctly entered data")
+	@Pattern(regexp = "[^а-яА-я]+$", message = "not correctly entered data")
+	@Size(min = 2, max = 150, 
+	message="Title must be between 2 and 150 characters long.")
 	@Column(name="author",nullable = false)
 	private String author;
 	
+	@Pattern(regexp="^[0-9-]+$", 
+	message="publication_date must contain only numbers and hyphens")
 	@Column(name="publication_date")
 	private String publication_date;
 	
+	@Pattern(regexp = "[^а-яА-я]+$", message = "not correctly entered data")
+	@Size(min = 2, max = 150, 
+	message="Title must be between 2 and 150 characters long.")
 	@Column(name="publisher")
 	private String publisher;
 	

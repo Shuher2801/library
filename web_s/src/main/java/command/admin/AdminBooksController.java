@@ -87,10 +87,11 @@ public class AdminBooksController {
  * @param g
  * @return
  */
+
 	@RequestMapping(value = "/addBook", method = RequestMethod.POST)
 	public String addBook(@ModelAttribute("book") @Valid Books book, BindingResult br, ModelMap model,
 			@RequestParam("g") String g) {
-		String page = null;
+		String page;
 
 		if (!br.hasErrors()) {
 			try {
@@ -107,11 +108,39 @@ public class AdminBooksController {
 				e.printStackTrace();
 			}
 			display(model);
-		} 
+		}
+		else {
+			int pageB = 1;
+			int recordsPerPage = 5;
+
+			List<Books> books = booksServices.list((pageB - 1) * recordsPerPage, recordsPerPage);
+
+			long noOfRecords = booksServices.count();
+
+			int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+
+			model.addAttribute("noOfPages", noOfPages);
+			model.addAttribute("currentPage", pageB);
+
+			model.put("books", books);
+			List<Genres> genres = null;
+			try {
+				genres = genreServices.getAll();
+			} catch (ServiceException e) {
+				log.error(e);
+				e.printStackTrace();
+			}
+			model.put("genre", genres);
+		}
 		
 
 		return page = ConfigurationManager.getProperty("path.page.adminPage");
 	}
+	
+	
+	
+	
+	
 /**
  * Method for removal book
  * @param a
@@ -120,7 +149,7 @@ public class AdminBooksController {
  */
 	@RequestMapping(value = "/deleteBook", method = RequestMethod.GET)
 	public String execute(@RequestParam("id") String a, ModelMap model) {
-		String page = null;
+		String page;
 		Long id = Long.parseLong(a);
 		boolean flag = false;
 

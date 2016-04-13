@@ -52,7 +52,7 @@ public class UserDaoImpl extends BaseDao<Users> implements IUserDao {
 	 * Selects user by name of user
 	 */
 	public Users getUserByName(String userName) throws DaoException {
-		Users user=null;
+		Users user;
 		try {
 		Criteria criteria = getSession().createCriteria(Users.class);
 		criteria.add(Restrictions.eq("name", userName));

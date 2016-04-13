@@ -33,7 +33,7 @@ public class JournalController {
 
 	@RequestMapping(value = "/journal", method = RequestMethod.POST)
 	public String execute(ModelMap model) {
-		String page = null;
+		String page;
 		display(model);
 
 		page = ConfigurationManager.getProperty("path.page.orderList");

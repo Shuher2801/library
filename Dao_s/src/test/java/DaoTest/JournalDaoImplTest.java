@@ -63,7 +63,7 @@ public class JournalDaoImplTest {
 		Long idJournal= null;
 		try {
 			
-			Books t = new Books("eee", "eee", "eee", "eee", 1);
+			Books t = new Books("eee", "eee", "12", "eee", 1);
 			 bookDaoImpl.add(t);
 			id = t.getId();
 
@@ -83,7 +83,7 @@ public class JournalDaoImplTest {
 			assertNotNull(journal);
 			assertEquals("eee", journal.getBooks().getName_book());
 			assertEquals("eee", journal.getBooks().getAuthor());
-			assertEquals("eee", journal.getBooks().getPublication_date());
+			assertEquals("12", journal.getBooks().getPublication_date());
 			assertEquals("eee", journal.getBooks().getPublisher());
 			assertEquals(1, (long)journal.getBooks().getCount());
 			assertEquals("rr", journal.getUsers().getName());
@@ -113,7 +113,7 @@ public class JournalDaoImplTest {
 		Journal journal = null;
 		try {
 			
-			Books t = new Books("eee", "eee", "eee", "eee", 1);
+			Books t = new Books("eee", "eee", "12", "eee", 1);
 			 bookDaoImpl.add(t);
 			id = t.getId();
 

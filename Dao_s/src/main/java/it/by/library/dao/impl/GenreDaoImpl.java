@@ -39,7 +39,7 @@ public class GenreDaoImpl extends BaseDao<Genres> implements IGenreDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Genres> getAll() throws DaoException {
-		List<Genres> list = null;
+		List<Genres> list;
 		try {
 			String hql = "FROM Genres";
 			Query query = getSession().createQuery(hql);
@@ -62,7 +62,7 @@ public class GenreDaoImpl extends BaseDao<Genres> implements IGenreDao {
 	public Genres getByGenre(String name) throws DaoException {
 
 		String hql = "FROM Genres g where g.genre=:genre";
-		Genres genre = null;
+		Genres genre;
 		try {
 			Query query = getSession().createQuery(hql);
 			query.setParameter("genre", name);

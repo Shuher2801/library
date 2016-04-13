@@ -45,7 +45,7 @@ public class JournalServices extends BaseService <Journal> implements IJournalSe
 	@Override
 	public List<Journal> getAll() throws ServiceException {
 
-		List<Journal> list = null;
+		List<Journal> list;
 		try {
 			list = journalDao.getAll();
 
@@ -60,7 +60,7 @@ public class JournalServices extends BaseService <Journal> implements IJournalSe
 	@Override
 	public List<Journal> findByUser(Users user) throws ServiceException {
 
-		List<Journal> list = null;
+		List<Journal> list;
 		try {
 
 			list = journalDao.getByUser(user);
@@ -84,7 +84,7 @@ public class JournalServices extends BaseService <Journal> implements IJournalSe
 	@Override
 	public List<Journal> findByTime() throws ServiceException {
 
-		List<Journal> list = null;
+		List<Journal> list;
 		try {
 			list = journalDao.getByTime();
 
@@ -107,7 +107,7 @@ public class JournalServices extends BaseService <Journal> implements IJournalSe
 	@Override
 	public List<Journal> findByTimeReturn() throws ServiceException {
 
-		List<Journal> list = null;
+		List<Journal> list;
 		try {
 
 			list = journalDao.getByTimeReturn();
@@ -154,7 +154,7 @@ public class JournalServices extends BaseService <Journal> implements IJournalSe
 	@Override
 	@Transactional
 	public boolean findByGenre(Long id) throws ServiceException {
-		List<Books> ListBook = null;
+		List<Books> ListBook;
 		boolean flag = false;
 		try {
 
@@ -204,7 +204,7 @@ public class JournalServices extends BaseService <Journal> implements IJournalSe
 	@Transactional
 	public boolean findByBook(Long id) throws ServiceException {
 	
-		List<Journal> list = null;
+		List<Journal> list;
 		boolean flag = false;
 		try {
 			
